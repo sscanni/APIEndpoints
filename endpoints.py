@@ -10,11 +10,11 @@ def puppiesFunction():
        return getAllPuppies()
     if request.method == 'POST':
        #Call the method to make a new puppy
-       return makeANewPuppy
+       return makeANewPuppy()
   
  
 #Make another app.route() decorator here that takes in an integer named 'id' for when the client visits a URI like "/puppies/5"
-@app.route('/puppies/<int:id>', methods=['GET', 'POST', 'DELETE'])
+@app.route('/puppies/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def puppiesFunctionId(id):
   if request.method == 'GET':
      #Call the method to get a specific puppy based on their id
