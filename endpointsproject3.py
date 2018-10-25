@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from models import Base, Puppy
 
 
-engine = create_engine('sqlite:///puppies.db')
+engine = create_engine('sqlite:///puppies.db?check_same_thread=False')
 Base.metadata.bind = engine
 
 DBSession = sessionmaker(bind=engine)
@@ -21,6 +21,7 @@ app = Flask(__name__)
 @app.route("/puppies", methods = ['GET', 'POST'])
 def puppiesFunction():
   if request.method == 'GET':
+    print ("puppies get")
     #Call the method to Get all of the puppies
     return getAllPuppies()
   elif request.method == 'POST':
@@ -53,7 +54,9 @@ def puppiesFunctionId(id):
     return deletePuppy(id)
 
 def getAllPuppies():
+  print ("getAllPuppies")
   puppies = session.query(Puppy).all()
+  print ("got to here")
   return jsonify(Puppies=[i.serialize for i in puppies])
 
 def getPuppy(id):

@@ -2,7 +2,7 @@ import httplib2
 import json
 import sys
 
-print "Running Endpoint Tester....\n"
+print ("Running Endpoint Tester....\n")
 address = raw_input("Please enter the address of the server you want to access, \n If left blank the connection will be set to 'http://localhost:5000':   ")
 if address == '':
 	address = 'http://localhost:5000'
@@ -10,7 +10,7 @@ if address == '':
 
 
 #Making a POST Request
-print "Making a POST request to /puppies..."
+print ("Making a POST request to /puppies...")
 try:
 	url = address + "/puppies?name=Fido&description=Playful+Little+Puppy"
 	h = httplib2.Http()
@@ -31,7 +31,7 @@ else:
 
 
 #Making a GET Request
-print "Making a GET Request for /puppies..."
+print ("Making a GET Request for /puppies...")
 try:
 	url = address + "/puppies"
 	h = httplib2.Http()
